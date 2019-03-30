@@ -1,12 +1,43 @@
 import * as BABYLON from 'babylonjs';
+import "isomorphic-fetch";
+import moves from './moves';
 
 /**
  * GraphicsEngine class for running BabylonJS
  * and rendering 3D rigged character on it
  */
 
-let side = 1
-let itr = 0.5 
+let side = 1;
+let itr = 0.5;
+let shouldRecord = false; 
+var gPose = "";
+let renderCount = 0;
+let renderThanosCount = -20;
+let thanosDance = true;
+let rotationJSON = {};
+export function getPose(){
+  return gPose;
+}
+
+export function startRecord(){
+    shouldRecord = true;
+}
+
+export function stopRecord(){
+    shouldRecord = false;
+    console.log("STTTTOOOPPPP");
+    fetch('http://localhost:3000/recordPose', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    rotationJSON
+  })
+    });
+}
+
 export default class GraphicsEngine {
     /**
      * the class constructor
@@ -43,18 +74,29 @@ export default class GraphicsEngine {
             const right_arm_bone = skeleton.bones[14];
             const left_shoulder_bone = skeleton.bones[32];
             const left_arm_bone = skeleton.bones[33];
-            const left_thigh_bone = skeleton.bones[50];
-            const left_calf_bone = skeleton.bones[51];
-            const left_ankle_bone = skeleton.bones[52];
-            const random_bone = skeleton.bones[52];
+            const right_thigh_bone = skeleton.bones[50];
+            const right_calf_bone = skeleton.bones[51];
+            const right_ankle_bone = skeleton.bones[52];
+            const left_ankle_bone = skeleton.bones[56];
+            const left_calf_bone = skeleton.bones[55];
+            const left_thigh_bone = skeleton.bones[54];
+            // const random_bone = skeleton.bones[0];
             console.log(skeleton.bones.length)
 
             const lookAtCtl = new BABYLON.BoneLookController(mesh, head_bone, sphere.position, { adjustYaw: Math.PI * .5, adjustRoll: Math.PI * .5 });
 
             this.scene.registerBeforeRender(() => {
-
-                const { data } = this.joints;
-                console.log(this.joints.data.rightShoulder)
+                let data;
+                if(thanosDance && renderThanosCount>=0 && renderThanosCount<41){
+                    console.log("fetching from movess...");
+                    console.log(renderThanosCount);
+                    data = JSON.parse(JSON.stringify(moves["rotationJSON"][renderThanosCount]));
+                    console.log(data);
+                }else{
+                    data = this.joints.data;
+                }
+                gPose = data
+                // console.log(this.joints.data.rightShoulder)
                 sphere.position.x = 0 + data.head.x;
                 sphere.position.y = 6 + data.head.y;
                 sphere.position.z = 5;
@@ -65,14 +107,29 @@ export default class GraphicsEngine {
                 right_arm_bone.rotation = new BABYLON.Vector3(0, -1* data.rightElbow, 0);
                 left_shoulder_bone.rotation = new BABYLON.Vector3(0, -1 * data.leftShoulder, 0);
                 left_arm_bone.rotation = new BABYLON.Vector3(0, data.leftElbow, 0);
-                random_bone.rotation = new BABYLON.Vector3(0, 0, itr);
-                if (itr==3 ){
-                   side = -0.1
-                }else if(itr == 0){
-                   side = 0.1     
-                }
-                itr = itr + side    
+                
+                right_thigh_bone.rotation = new BABYLON.Vector3(0, (-3)+data.rightHip,0);
+                right_calf_bone.rotation = new BABYLON.Vector3(0, -1*data.rightKnee,0);
+                left_thigh_bone.rotation = new BABYLON.Vector3(0, (3)+(-1*data.leftHip),0);
+                left_calf_bone.rotation = new BABYLON.Vector3(0, data.leftKnee,0);
+
+
+                // random_bone.rotation = new BABYLON.Vector3(0, 0, itr);
+                // right_thigh_bone
+                // if (itr==3 ){
+                //    side = -0.1
+                // }else if(itr == 0){
+                //    side = 0.1     
+                // }
+                // itr = itr + side    
                 // console.log(right_shoulder_bone.rotation)
+
+
+                if (shouldRecord){
+                    rotationJSON[renderCount] = JSON.parse(JSON.stringify(data));
+                    renderCount++;
+                }
+                renderThanosCount++;
             });
         });
     };

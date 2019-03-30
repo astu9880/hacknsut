@@ -4,12 +4,15 @@ import ReactLoading from 'react-loading';
 import { markdown } from 'markdown';
 const fs = require("fs");
 
+
+
 import styles from './styles.css';
 
 import Joints from './joints';
 import GraphicsEngine from './graphics';
 import {PoseNet} from './posenet';
-import {getPose} from './posenet';
+import {getPose} from './graphics';
+import {startRecord,stopRecord} from './graphics';
 
 /**
  * React Component for runnign neural networks and 3D graphics
@@ -60,7 +63,12 @@ class App extends React.Component {
                 <h2 className="text-center" id="h2">
                     Controlling Virtual Character Through WebCam
                 </h2>
-                <button onClick={()=>{console.log(getPose(),"KKKKKKK")}}>Click to record</button>
+                <button onClick={startRecord}>
+                    Start
+                </button>
+                <button onClick={stopRecord}>
+                    Stop
+                </button>
                 <h5 id="h5">
                     Note: make sure to give webcam ACCESS and only a single person is in the scene. Otherwise, the results might be inaccurate.
                 </h5>

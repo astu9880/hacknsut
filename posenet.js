@@ -14,11 +14,7 @@ navigator.getUserMedia = navigator.getUserMedia ||
  * and running inferences on it
  */
 
-var gPose = "";
 
-export function getPose(){
-  return gPose;
-}
 
 
 export class PoseNet{
@@ -122,7 +118,7 @@ export class PoseNet{
       poses.push(pose);
 
       // console.log(pose);
-      gPose = pose;
+      // gPose = pose;
 
       minPoseConfidence = +self.state.singlePoseDetection.minPoseConfidence;
       minPartConfidence = +self.state.singlePoseDetection.minPartConfidence;
@@ -142,8 +138,11 @@ export class PoseNet{
         if (score >= minPoseConfidence) {
           self.transform.updateKeypoints(keypoints, minPartConfidence);
           const head = self.transform.head();
-          self.transform.rotateJoint('rightShoulder','rightElbow','rightWrist');
-          self.transform.rotateJoint('leftShoulder','leftElbow','leftWrist');
+          self.transform.rotateJointArm('rightShoulder','rightElbow','rightWrist');
+          self.transform.rotateJointArm('leftShoulder','leftElbow','leftWrist');
+          self.transform.rotateJointLeg('leftHip','leftKnee','leftAnkle');
+          self.transform.rotateJointLeg('rightHip','rightKnee','rightAnkle');
+          
           const shouldMoveFarther = drawKeypoints(keypoints.slice(0, 7), minPartConfidence, ctx);
           if (shouldMoveFarther){
             ctx.font = "30px Arial";

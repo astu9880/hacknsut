@@ -78,7 +78,7 @@ export default class Transform{
      * @param {intger} jointC index of a joint
      * @returns {float} angle
      */
-    rotateJoint(jointA, jointB, jointC){
+    rotateJointArm(jointA, jointB, jointC){
         if (this.keypoints[jointA] && this.keypoints[jointB] && this.keypoints[jointC]){
 
             var refPoint1 = {
@@ -97,6 +97,27 @@ export default class Transform{
             sign = (this.keypoints[jointC].y < this.keypoints[jointB].y) ? 1 : -1;
             this.joints.update(jointB, sign * angle);
 
+            // return angle;
+        }
+    }
+
+    rotateJointLeg(jointA, jointB, jointC){
+        if (this.keypoints[jointA] && this.keypoints[jointB] && this.keypoints[jointC]){
+            var refPoint1 = {
+                'x': this.keypoints[jointA].x,
+                'y': this.keypoints[jointB].y
+            }; 
+            var refPoint2 = {
+                'x': this.keypoints[jointB].x,
+                'y': this.keypoints[jointC].y
+            };
+            var angle = this.findAngle(this.keypoints[jointA], this.keypoints[jointB], refPoint1);
+            var sign = (this.keypoints[jointB].y > this.keypoints[jointA].y) ? 1 : -1;
+            this.joints.update(jointA, sign * angle);
+
+            angle = this.findAngle(this.keypoints[jointB], refPoint2 , this.keypoints[jointC]);
+            sign = (this.keypoints[jointC].y < this.keypoints[jointB].y) ? 1 : -1;
+            this.joints.update(jointB, sign * angle);
             // return angle;
         }
     }
