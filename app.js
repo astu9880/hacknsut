@@ -5,6 +5,12 @@ import { markdown } from 'markdown';
 const fs = require("fs");
 
 
+import './public/main.css'
+import './public/bootstrap.min.css'
+
+import $ from 'jquery';
+
+import InlineBlock from 'react-inline-block'
 
 import styles from './styles.css';
 
@@ -13,6 +19,122 @@ import GraphicsEngine from './graphics';
 import {PoseNet} from './posenet';
 import {getPose} from './graphics';
 import {startRecord,stopRecord} from './graphics';
+
+
+class MainComp extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            slide: 0
+        }
+    }
+
+        render(){
+        return (
+                <div>
+                    
+                    
+                    <div className="jumbotron" style={{height : '50px', paddingTop: '1rem', marginBottom: '0px'}}>
+                        <h1><p align="center">DanceSmash</p></h1>
+                    </div>
+                    <div id="app" className="navbar-na" style={{paddingTop:'1rem'}}>
+                            
+                            <InlineBlock id="n1" onClick={()=>{this.setState({slide: 0})}}
+                             className="col-xl-4 col-md-4 col-lg-4 active nav-element"
+                             >  
+                                    <h3><p align="center">DNCE-Net</p></h3>
+                                    <p align="center">Deep Neural Choreography Emulation Network</p>
+                            </InlineBlock>
+                            
+                            <InlineBlock id="n2" onClick={()=>{this.setState({slide: 1})}} className="col-xl-4 col-md-4 col-lg-4 nav-element" > 
+                                    <h3><p align="center">Compete</p></h3> 
+                                    <p align="center">Showcase your dancing skills globally</p>
+                            </InlineBlock>
+                            <InlineBlock id="n3" onClick={()=>{this.setState({slide: 2})}} className="col-xl-3 col-md-4 col-lg-4 nav-element" > 
+                                    <h3><p align="center">Rank</p></h3> 
+                                    <p align="center">Rate other players</p>
+                            </InlineBlock>
+                            
+                    </div>
+                { this.state.slide == 0 ?
+
+                    <div className="slides jumbotron" style={{height:'750px',backgroundColor:'f5f5f5 !important'}}>
+
+                            <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
+                                <div className="container">
+                                    <br />
+                                
+                                    <div className="container" >
+                                            <div className="form-group">
+                                                    <label>Select song:</label>
+                                                    <select className="form-control" id="sel1">
+                                                    <option>YMCA</option>
+                                                    <option>Where are you now</option>
+                                                    <option>Chandelier</option>
+                                                    <option>We will rock you</option>
+                                                    </select>
+                                            </div>
+                                            
+                                            <div id="analyse" className="btn align-items-center btn-info"> Analyse</div>
+                                            &nbsp;
+                                            <div name="play" className="btn align-items-center btn-danger"> Play</div>
+                                            
+                                    </div>
+                                    <br />
+                                    <br /><br /><br /><br />
+                                    <div id="beats" style={{height: '100px', width: '100px'}} className="progress beatanimation blue">
+                                        <span className="progress-left">
+                                            <span id="s1" className="progress-bar anim2"></span>
+                                        </span>
+                                        <span className="progress-right">
+                                            <span id="s2" className="progress-bar anim1"></span>
+                                        </span>
+                                        <div id="text" className="progress-value">Loading...</div>
+                                    </div>
+                                </div>
+                            </InlineBlock>
+                            <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
+                                <canvas>hi</canvas>
+                            </InlineBlock>
+                            
+                    </div>
+
+: this.state.slide == 1?
+                    <App />
+
+:
+                    <div className="slides jumbotron" style={{height:'750px',backgroundColor:'f5f5f5 !important'}}>
+                            <div className="form-group">
+                                    <label>Select song:</label>
+                                    <select className="form-control" id="sel1">
+                                    <option>Red</option>
+                                    <option>Blue</option>
+                                    <option>Green</option>
+                                    </select>
+                            </div>
+                            <InlineBlock className="col-lg-6 col-xl-6 col-md-6">
+                                <div className="container">
+
+                                
+                                </div>
+                            </InlineBlock>
+                            <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
+                                    <canvas>hi</canvas>
+                            </InlineBlock>
+                            <div className="container">
+                                <p align="center"><span className="btn btn-info">Record</span>&nbsp;&nbsp;<span className="btn btn-danger">Submit</span></p>
+                            </div>
+                            
+                    </div>
+                    
+                }
+                <script src="./public/main.js"></script>
+            </div>
+            
+        );
+   }
+}
 
 /**
  * React Component for runnign neural networks and 3D graphics
@@ -94,6 +216,123 @@ class App extends React.Component {
             </div>
         );
     }
+    
+    
+    
+    
+//     render(){
+//         return (
+//                 <div>
+//                     <script src="./public/main.jsx"></script>
+//                     <script src="jquery.min.js"></script>
+//                     <script src="bootstrap.min.js"></script>
+//                     <div className="jumbotron" style={{height : '50px', paddingTop: '1rem', marginBottom: '0px'}}>
+//                         <h1><p align="center">DanceSmash</p></h1>
+//                     </div>
+//                     <div id="app" className="navbar-na" style={{paddingTop:'1rem'}}>
+                            
+//                             <InlineBlock id="n1" onClick={()=>{this.setState({slide: 0})}}
+//                              className="col-xl-4 col-md-4 col-lg-4 active nav-element"
+//                              >  
+//                                     <h3><p align="center">DNCE-Net</p></h3>
+//                                     <p align="center">Deep Neural Choreography Emulation Network</p>
+//                             </InlineBlock>
+                            
+//                             <InlineBlock id="n2" onClick={()=>{this.setState({slide: 1})}} className="col-xl-4 col-md-4 col-lg-4 nav-element" > 
+//                                     <h3><p align="center">Compete</p></h3> 
+//                                     <p align="center">Showcase your dancing skills globally</p>
+//                             </InlineBlock>
+//                             <InlineBlock id="n3" onClick={()=>{this.setState({slide: 2})}} className="col-xl-3 col-md-4 col-lg-4 nav-element" > 
+//                                     <h3><p align="center">Rank</p></h3> 
+//                                     <p align="center">Rate other players</p>
+//                             </InlineBlock>
+                            
+//                     </div>
+//                 { this.state.slide == 0 ?
+
+//                     <div className="slides jumbotron" style={{height:'750px',backgroundColor:'f5f5f5 !important'}}>
+
+//                             <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
+//                                 <div className="container">
+//                                     <br />
+                                
+//                                     <div className="container" >
+//                                             <div className="form-group">
+//                                                     <label>Select song:</label>
+//                                                     <select className="form-control" id="sel1">
+//                                                     <option>YMCA</option>
+//                                                     <option>Where are you now</option>
+//                                                     <option>Chandelier</option>
+//                                                     <option>We will rock you</option>
+//                                                     </select>
+//                                             </div>
+                                            
+//                                             <div id="analyse" className="btn align-items-center btn-info"> Analyse</div>
+//                                             &nbsp;
+//                                             <div name="play" className="btn align-items-center btn-danger"> Play</div>
+                                            
+//                                     </div>
+//                                     <br />
+//                                     <br /><br /><br /><br />
+//                                     <div id="beats" style={{height: '100px', width: '100px'}} className="progress beatanimation blue">
+//                                         <span className="progress-left">
+//                                             <span id="s1" className="progress-bar anim2"></span>
+//                                         </span>
+//                                         <span className="progress-right">
+//                                             <span id="s2" className="progress-bar anim1"></span>
+//                                         </span>
+//                                         <div id="text" className="progress-value">Loading...</div>
+//                                     </div>
+//                                 </div>
+//                             </InlineBlock>
+//                             <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
+//                                 <canvas>hi</canvas>
+//                             </InlineBlock>
+                            
+//                     </div>
+
+// : this.state.slide == 1?
+//                     <div className="slides jumbotron" style={{height:'750px',backgroundColor:'f5f5f5 !important'}}>
+//                             <div className="form-group">
+//                                     <label>Select song:</label>
+//                                     <select className="form-control" id="sel1">
+//                                     <option>Red</option>
+//                                     <option>Blue</option>
+//                                     <option>Green</option>
+//                                     </select>
+//                             </div>    
+//                     </div>
+
+// :
+//                     <div className="slides jumbotron" style={{height:'750px',backgroundColor:'f5f5f5 !important'}}>
+//                             <div className="form-group">
+//                                     <label>Select song:</label>
+//                                     <select className="form-control" id="sel1">
+//                                     <option>Red</option>
+//                                     <option>Blue</option>
+//                                     <option>Green</option>
+//                                     </select>
+//                             </div>
+//                             <InlineBlock className="col-lg-6 col-xl-6 col-md-6">
+//                                 <div className="container">
+
+                                
+//                                 </div>
+//                             </InlineBlock>
+//                             <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
+//                                     <canvas>hi</canvas>
+//                             </InlineBlock>
+//                             <div className="container">
+//                                 <p align="center"><span className="btn btn-info">Record</span>&nbsp;&nbsp;<span className="btn btn-danger">Submit</span></p>
+//                             </div>
+                            
+//                     </div>
+                    
+//                 }
+                
+//             </div>
+//         );
+//    }
 }
 
 const WeCamAccess = () => (
@@ -105,7 +344,7 @@ const WeCamAccess = () => (
     </div>);
 
 ReactDOM.render(
-    <App />,
+    <MainComp />,
     document.getElementById('react-container')
 );
 
