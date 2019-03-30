@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="main.css" rel="stylesheet">
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <script src="jquery.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+    </head>
+    <body> 
+        <div class="jumbotron" style="height:50px; padding-top: 1rem; margin-bottom: 0px">
+            <h1><p align="center">DanceSmash</p></h1>
+            <span id='magic-line'></span>
+        </div>
+        <div id="app" class="navbar-na" style="padding-top:1rem">
+                
+                <div id="n1" class="col-xl-4 col-md-4 col-lg-4 active nav-element" style="display:inline-block"> 
+                        <h3><p align="center">DNCE-Net</h3></p>
+                        <p align="center">Deep Neural Choreography Emulation Network</p>
+                </div>
+                
+                <div id="n2" class="col-xl-4 col-md-4 col-lg-4 nav-element" style="display:inline-block"> 
+                        <h3><p align="center">Compete</p></h3> 
+                        <p align="center">Showcase your dancing skills globally</p>
+                </div>
+                <div id="n3" class="col-xl-3 col-md-4 col-lg-4 nav-element" style="display:inline-block"> 
+                        <h3><p align="center">Rank</p></h3> 
+                        <p align="center">Rate other players</p>
+                </div>
+                
+        </div>
+
+
+        <div class="slides jumbotron" style="height:750px;background-color:f5f5f5 !important;">
+
+                <div class="col-lg-6 col-xl-6 col-md-6" style="display:inline-block">
+                    <div class="container">
+                        <br>
+                    
+                        <div class="container" >
+                                <div class="form-group">
+                                        <label for="sel1">Select song:</label>
+                                        <select class="form-control" id="sel1">
+                                        <option>YMCA</option>
+                                        <option>Where are you now</option>
+                                        <option>Chandelier</option>
+                                        <option>We will rock you</option>
+                                        </select>
+                                </div>
+                                
+                                <div id="analyse" class="btn align-items-center btn-info"> Analyse</div>
+                                &nbsp;
+                                <div name="play" class="btn align-items-center btn-danger"> Play</div>
+                                  
+                        </div>
+                        <br>
+                        <br><br><br><br>
+                        <div id="beats" style="height: 100px; width: 100px;" class="progress beatanimation blue">
+                            <span class="progress-left">
+                                <span id="s1" class="progress-bar anim2"></span>
+                            </span>
+                            <span class="progress-right">
+                                <span id="s2" class="progress-bar anim1"></span>
+                            </span>
+                            <div id="text" class="progress-value">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-6 col-md-6" style="display:inline-block;">
+                    <canvas>hi</canvas>
+                </div>
+                
+        </div>
+
+        <!-- tron for competing -->
+
+        <div class="slides jumbotron" style="height:750px;background-color:f5f5f5 !important;">
+                <div class="form-group">
+                        <label for="sel1">Select song:</label>
+                        <select class="form-control" id="sel1">
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Green</option>
+                        </select>
+                </div>
+                <div class="col-lg-6 col-xl-6 col-md-6" style="display:inline-block">
+                    <div class="container">
+
+                    
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-6 col-md-6" style="display:inline-block;">
+                        <canvas>hi</canvas>
+                </div>
+                <div class="container">
+                    <p align="center"><span class="btn btn-info">Record</span>&nbsp;&nbsp;<span class="btn btn-danger">Submit</span></p>
+                </div>
+                
+        </div>
+
+        <!-- tron for ranking -->
+
+        <div class="slides jumbotron" style="height:750px;background-color:f5f5f5 !important;">
+                <div class="form-group">
+                        <label for="sel1">Select song:</label>
+                        <select class="form-control" id="sel1">
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Green</option>
+                        </select>
+                </div>
+                <div class="col-lg-6 col-xl-6 col-md-6" style="display:inline-block">
+                    <div class="container">
+
+                    
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-6 col-md-6" style="display:inline-block;">
+                        <canvas>hi</canvas>
+                </div>
+                <div class="container">
+                    <p align="center"><span class="btn btn-info">Record</span>&nbsp;&nbsp;<span class="btn btn-danger">Submit</span></p>
+                </div>
+                
+        </div>
+        
+    </body>
+    <script src="main.js"></script>
+</html>
