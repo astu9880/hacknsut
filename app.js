@@ -45,7 +45,8 @@ class MainComp extends React.Component{
                              // className="col-xl-4 col-md-4 col-lg-4 active nav-element"
                              >  
                                     <h4><p align="center">Learn</p></h4>
-                                    <p align="center">Using Deep Neural Choreography Emulation Network (DNCE-Net)</p>
+                                    <p align="center">Using Deep Neural Choreography</p>
+                                    <p align="center">Emulation Network (DNCE-Net)</p>
                             </div>
                             
                             <div id="n2" style={{width: "33%",paddingTop:'5px',lineHeight: '4px',backgroundColor: this.state.slide==1?"orange":"white"}} onClick={()=>{this.setState({slide: 1})}}  > 
