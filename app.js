@@ -26,7 +26,8 @@ class MainComp extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            slide: 0
+            slide: 0,
+            play: 0
         }
     }
 
@@ -34,7 +35,7 @@ class MainComp extends React.Component{
         return (
                 <div>
                     
-                    
+                    <audio id="wavingAud" hidden src="./dist/wavingflag.mp3"></audio>
                     <div className="jumbotron" style={{height : '50px', paddingTop: '1rem', marginBottom: '0px'}}>
                         <h1><p align="center">DanceSmash</p></h1>
                     </div>
@@ -69,16 +70,26 @@ class MainComp extends React.Component{
                                             <div className="form-group">
                                                     <label>Select song:</label>
                                                     <select className="form-control" id="sel1">
-                                                    <option>YMCA</option>
+                                                    <option>Waving Flag</option>
                                                     <option>Where are you now</option>
                                                     <option>Chandelier</option>
                                                     <option>We will rock you</option>
                                                     </select>
                                             </div>
                                             
-                                            <div id="analyse" className="btn align-items-center btn-info"> Analyse</div>
+                                            <div id="analyse" onClick={()=>{}} className="btn align-items-center btn-info"> Analyse</div>
                                             &nbsp;
-                                            <div name="play" className="btn align-items-center btn-danger"> Play</div>
+                                            <div name="play" onClick={()=>{
+                                                
+                                                if(!this.state.play){
+                                                    document.getElementById('wavingAud').play()
+                                                    document.getElementById('wavingVid').play()
+                                                }else{
+                                                    document.getElementById('wavingAud').pause()
+                                                    document.getElementById('wavingVid').pause()
+                                                }
+                                                this.setState({play: !this.state.play})
+                                                }} className="btn align-items-center btn-danger"> Play</div>
                                             
                                     </div>
                                     <br />
@@ -95,7 +106,7 @@ class MainComp extends React.Component{
                                 </div>
                             </InlineBlock>
                             <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
-                                <canvas>hi</canvas>
+                                <video id="wavingVid" src="./dist/wavingflag.mov" style={{height:'500px',width:'500px'}} />
                             </InlineBlock>
                             
                     </div>
