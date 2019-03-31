@@ -1,15 +1,18 @@
 
 
-bpmdict={'YMCA':'120bpm', 'Where are you now':'230bpm', 'Chandelier':'100bpm', 'We will rock you':'160bpm'}
+
 
 console.log('working')
 
 
-$('#analyse').click(function(){
+document.getElementById('beats').style.visibility='hidden'
+
+document.getElementById('analyse').addEventListener('click',function(){
     // restart animation
-    $('#beats').show()
-    console.log($('#sel1').val())
-    $('#text').html('Loading...')
+    bpmdict={'YMCA':'120bpm', 'Where are you now':'230bpm', 'Chandelier':'100bpm', 'We will rock you':'160bpm'}
+    document.getElementById('beats').style.visibility='visible'
+
+    document.getElementById('text').innerHTML='Loading...'
     var s1 = document.getElementById('s1')
     var s2 = document.getElementById('s2')
     var beats = document.getElementById('beats')
@@ -25,8 +28,9 @@ $('#analyse').click(function(){
     }, 10);
 
     setTimeout(function(){
-        $('#text').html(bpmdict[$('#sel1').val()])
-        bpm=bpmdict[$('#sel1').val()]
+        var e=document.getElementById("elementId")
+        document.getElementById('text').innerHTML=bpmdict[e.options[e.selectedIndex].text]
+        bpm=document.getElementById('text').innerHTML
         bpm=bpm.substring(0,bpm.length-3)
         bpm=(Number)(bpm)
         bpm=60000/bpm

@@ -35,7 +35,7 @@ class MainComp extends React.Component{
         return (
                 <div>
                     
-                    <audio id="wavingAud" hidden src="./dist/wavingflag.mp3"></audio>
+                    {/* <audio id="wavingAud" hidden src="./dist/wavingflag.mp3"></audio> */}
                     <div className="jumbotron" style={{height : '50px', paddingTop: '1rem', marginBottom: '0px'}}>
                         <h1><p align="center">DanceSmash</p></h1>
                     </div>
@@ -61,10 +61,9 @@ class MainComp extends React.Component{
                 { this.state.slide == 0 ?
 
                     <div className="slides jumbotron" style={{height:'750px',backgroundColor:'f5f5f5 !important'}}>
-
+                            
                             <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
-                                <div className="container">
-                                    <br />
+                                <div className="container" style={{position:'absolute',top:'-500px'}}>
                                 
                                     <div className="container" >
                                             <div className="form-group">
@@ -77,7 +76,43 @@ class MainComp extends React.Component{
                                                     </select>
                                             </div>
                                             
-                                            <div id="analyse" onClick={()=>{}} className="btn align-items-center btn-info"> Analyse</div>
+                                            <div id="analyse" onClick={()=>{
+                                                
+                                                bpmdict={'Waving Flag':'152bpm', 'Where are you now':'230bpm', 'Chandelier':'100bpm', 'We will rock you':'160bpm'}
+                                                document.getElementById('beats').style.visibility='visible'
+                                            
+                                                document.getElementById('text').innerHTML='Loading...'
+                                                var s1 = document.getElementById('s1')
+                                                var s2 = document.getElementById('s2')
+                                                var beats = document.getElementById('beats')
+                                                
+                                                s1.style.webkitAnimation = 'none';
+                                                s2.style.webkitAnimation = 'none';
+                                                beats.style.webkitAnimation = 'none';
+                                                
+                                                setTimeout(function() {
+                                                    s1.style.webkitAnimation = '';
+                                                    s2.style.webkitAnimation = '';
+                                                    beats.style.webkitAnimation = '';
+                                                }, 10);
+                                            
+                                                setTimeout(function(){
+                                                    var e=document.getElementById("sel1")
+                                                    // console.log(e.options[e.selectedIndex].text)
+                                                    var temp=bpmdict[e.options[e.selectedIndex].text]
+                                                    document.getElementById('text').innerHTML=temp
+                                                    var bpm=temp
+                                                    // console.log(bpm)
+                                                    bpm=bpm.substring(0,bpm.length-3)
+                                                    bpm=(Number)(bpm)
+                                                    bpm=60000/bpm
+                                                    bpm=Math.round(bpm)
+                                                    console.log(bpm)
+                                                    document.getElementById("beats").style.animationDuration = bpm.toString()+"ms";
+                                                },3500)
+
+
+                                            }} className="btn align-items-center btn-info"> Analyse</div>
                                             &nbsp;
                                             <div name="play" onClick={()=>{
                                                 
@@ -89,12 +124,12 @@ class MainComp extends React.Component{
                                                     document.getElementById('wavingVid').pause()
                                                 }
                                                 this.setState({play: !this.state.play})
-                                                }} className="btn align-items-center btn-danger"> Play</div>
+                                                }} className="btn align-items-center btn-danger"> Play/Pause</div>
                                             
                                     </div>
                                     <br />
                                     <br /><br /><br /><br />
-                                    <div id="beats" style={{height: '100px', width: '100px'}} className="progress beatanimation blue">
+                                    <div id="beats" style={{height: '100px', width: '100px', visibility: 'hidden'}} className="progress beatanimation blue">
                                         <span className="progress-left">
                                             <span id="s1" className="progress-bar anim2"></span>
                                         </span>
@@ -106,7 +141,7 @@ class MainComp extends React.Component{
                                 </div>
                             </InlineBlock>
                             <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
-                                <video id="wavingVid" src="./dist/wavingflag.mov" style={{height:'500px',width:'500px'}} />
+                                <p align="center"><video id="wavingVid" src="./dist/wavingflag.mov" style={{height:'500px',width:'500px'}} /></p>
                             </InlineBlock>
                             
                     </div>
@@ -123,6 +158,36 @@ class MainComp extends React.Component{
         );
    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * React Component for runnign neural networks and 3D graphics
