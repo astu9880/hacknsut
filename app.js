@@ -35,7 +35,7 @@ class MainComp extends React.Component{
         return (
                 <div>
                     
-                    {/* <audio id="wavingAud" hidden src="./dist/wavingflag.mp3"></audio> */}
+                    <audio id="wavingAud" hidden src="./dist/wavingflag.mp3"></audio>
                     <div className="jumbotron" style={{height : '50px', paddingTop: '1rem', marginBottom: '0px'}}>
                         <h1><p align="center">DanceSmash</p></h1>
                     </div>

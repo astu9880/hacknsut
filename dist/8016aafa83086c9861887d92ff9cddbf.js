@@ -71,7 +71,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({3:[function(require,module,exports) {
+})({5:[function(require,module,exports) {
 
 bpmdict = { 'YMCA': '120bpm', 'Where are you now': '230bpm', 'Chandelier': '100bpm', 'We will rock you': '160bpm' };
 
@@ -109,5 +109,5 @@ $('#analyse').click(function () {
 });
 
 // Credit: https://css-tricks.com/jquery-magicline-navigation
-},{}]},{},[3])
+},{}]},{},[5])
 //# sourceMappingURL=/dist/8016aafa83086c9861887d92ff9cddbf.map
