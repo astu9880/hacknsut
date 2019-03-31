@@ -5,8 +5,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 
 const videoBoxStyle={
 	width: '500px',
-	height: '500px',
-	backgroundColor: 'green'
+	height: '500px'
 };
 
 export default class Rank extends React.Component{
@@ -110,7 +109,7 @@ export default class Rank extends React.Component{
         	 				<div>
         	 					{!this.state.player1?"choose Player 1":this.state.player1}
         	 				</div>
-        	 				<p align="center"> &nbsp;<b>vs.</b>&nbsp;</p>
+        	 				<p align="center"> &nbsp;<b>VS.</b>&nbsp;</p>
         	 				<div>
         	 					{!this.state.player2?"choose Player 2":this.state.player2}
         	 				</div>
@@ -121,6 +120,7 @@ export default class Rank extends React.Component{
 									 document.getElementById('hidAud').play()
 									 
 								 }}>Go</div> </p>
+								 <p align="Center" id="result"></p>
         	 			
         	 		</div>	
         	 		<div style={videoBoxStyle}>
@@ -135,7 +135,10 @@ export default class Rank extends React.Component{
         	 			justifyContent: 'space-around'
         	 		}}
         	 	>
-        	 		<div>
+        	 		<div id="dislikeA" onClick={()=>{
+								 document.getElementById('rankVid1').style.opacity=0.3
+								 document.getElementById('result').innerHTML="Player B Won"
+							 }}>
         	 			<img src={'./dist' + '/reject.jpg'} alt="VS" width="50px" height="50px" />
         	 		</div>
 
@@ -144,7 +147,10 @@ export default class Rank extends React.Component{
         	 		>
         	 		</div>
 
-        	 		<div>
+        	 		<div id="dislikeB" onClick={()=>{
+								 document.getElementById('rankVid2').style.opacity=0.3
+								 document.getElementById('result').innerHTML="Player A Won"
+							 }}>
         	 			<img src={'./dist' + '/reject.jpg'} alt="VS" width="50px" height="50px" />
         	 		</div>	
         	 	</div>
