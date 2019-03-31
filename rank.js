@@ -120,7 +120,7 @@ export default class Rank extends React.Component{
 									 document.getElementById('hidAud').play()
 									 
 								 }}>Go</div> </p>
-								 <p align="Center" id="result"></p>
+								 <b><p align="Center" id="result"></p></b>
         	 			
         	 		</div>	
         	 		<div style={videoBoxStyle}>
@@ -138,6 +138,9 @@ export default class Rank extends React.Component{
         	 		<div id="dislikeA" onClick={()=>{
 								 document.getElementById('rankVid1').style.opacity=0.3
 								 document.getElementById('result').innerHTML="Player B Won"
+								 document.getElementById('rankVid1').pause()
+								 document.getElementById('rankVid2').pause()
+								 document.getElementById('hidAud').pause()
 							 }}>
         	 			<img src={'./dist' + '/reject.jpg'} alt="VS" width="50px" height="50px" />
         	 		</div>
@@ -150,6 +153,10 @@ export default class Rank extends React.Component{
         	 		<div id="dislikeB" onClick={()=>{
 								 document.getElementById('rankVid2').style.opacity=0.3
 								 document.getElementById('result').innerHTML="Player A Won"
+								 document.getElementById('rankVid1').pause()
+								 document.getElementById('rankVid2').pause()
+								 document.getElementById('hidAud').pause()
+
 							 }}>
         	 			<img src={'./dist' + '/reject.jpg'} alt="VS" width="50px" height="50px" />
         	 		</div>	
