@@ -39,23 +39,23 @@ class MainComp extends React.Component{
                     <div className="jumbotron" style={{height : '50px', paddingTop: '1rem', marginBottom: '0px'}}>
                         <h1><p align="center">DanceSmash</p></h1>
                     </div>
-                    <div id="app" className="navbar-na" style={{paddingTop:'1rem'}}>
+                    <div id="app" className="navbar-na" style={{display: 'flex', flexDirection: 'row', width: "100vw"}}>
                             
-                            <InlineBlock id="n1" onClick={()=>{this.setState({slide: 0})}}
-                             className="col-xl-4 col-md-4 col-lg-4 active nav-element"
+                            <div id="n1" style={{flexBasis: "33%",backgroundColor: this.state.slide==0?"orange":"white"}} onClick={()=>{this.setState({slide: 0})}}
+                             // className="col-xl-4 col-md-4 col-lg-4 active nav-element"
                              >  
                                     <h3><p align="center">DNCE-Net</p></h3>
                                     <p align="center">Deep Neural Choreography Emulation Network</p>
-                            </InlineBlock>
+                            </div>
                             
-                            <InlineBlock id="n2" onClick={()=>{this.setState({slide: 1})}} className="col-xl-4 col-md-4 col-lg-4 nav-element" > 
+                            <div id="n2" style={{flexBasis: "33%",backgroundColor: this.state.slide==1?"orange":"white"}} onClick={()=>{this.setState({slide: 1})}}  > 
                                     <h3><p align="center">Compete</p></h3> 
                                     <p align="center">Showcase your dancing skills globally</p>
-                            </InlineBlock>
-                            <InlineBlock id="n3" onClick={()=>{this.setState({slide: 2})}} className="col-xl-3 col-md-4 col-lg-4 nav-element" > 
+                            </div>
+                            <div id="n3" style={{flexBasis: "33%",flexGrow: 1,backgroundColor: this.state.slide==2?"orange":"white"}} onClick={()=>{this.setState({slide: 2})}} > 
                                     <h3><p align="center">Rank</p></h3> 
                                     <p align="center">Rate other players</p>
-                            </InlineBlock>
+                            </div>
                             
                     </div>
                 { this.state.slide == 0 ?
@@ -151,7 +151,7 @@ class App extends React.Component {
         this.graphics_engine = new GraphicsEngine(this.refs.babylon, this.joints);
         this.posenet = new PoseNet(this.joints, this.graphics_engine, this.refs);
         const descContent = fs.readFileSync("./description.md", "utf-8");
-        this.refs.description.innerHTML = markdown.toHTML(descContent);
+        // this.refs.description.innerHTML = markdown.toHTML(descContent);
         await this.posenet.loadNetwork();
         this.setState({loading: false});
         this.posenet.startPrediction().then((webcam) => {
@@ -171,7 +171,7 @@ class App extends React.Component {
         return (
             <div id="container">
                 <h2 className="text-center" id="h2">
-                    Controlling Virtual Character Through WebCam
+                    Make Your Dance Video With Avatar To Compete And Show Your Talent
                 </h2>
                 <button onClick={startRecord}>
                     Start
@@ -179,9 +179,7 @@ class App extends React.Component {
                 <button onClick={stopRecord}>
                     Stop
                 </button>
-                <h5 id="h5">
-                    Note: make sure to give webcam ACCESS and only a single person is in the scene. Otherwise, the results might be inaccurate.
-                </h5>
+                
                 <div className="row"  id="row">
                     <div className="col-6">
                         <div className="float-right"
@@ -200,7 +198,7 @@ class App extends React.Component {
                         <canvas ref="babylon" width={500} height={500} />
                     </div>
                 </div>
-                <div ref="description" id="description"/>
+               
             </div>
         );
     }
