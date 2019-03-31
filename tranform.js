@@ -57,18 +57,22 @@ export default class Transform{
 
     /** Updates head joint data */
     head(){
-        if(this.keypoints['nose'] && this.headCenter && this.shoulderCenter){
-            var x = this.keypoints['nose'].x;
-            var y = this.keypoints['nose'].y;
-            // get nose relative points from origin
-            x = (this.headCenter.x - x)/(this.distance/15);
-            y = this.shoulderCenter.y - y;
-            // normalize (i.e. scale it)
-            y = this.map(y,this.distance*1.5,this.distance*2.8,-2,2);
-            // console.log(140/this.distance,260/this.distance);
-            this.joints.update('head', { x, y });
-            return { x, y };
-        }
+        var x,y;
+        x=0;
+        y=0;
+        return {x,y};
+        // if(this.keypoints['nose'] && this.headCenter && this.shoulderCenter){
+        //     var x = this.keypoints['nose'].x;
+        //     var y = this.keypoints['nose'].y;
+        //     // get nose relative points from origin
+        //     x = (this.headCenter.x - x)/(this.distance/15);
+        //     y = this.shoulderCenter.y - y;
+        //     // normalize (i.e. scale it)
+        //     y = this.map(y,this.distance*1.5,this.distance*2.8,-2,2);
+        //     // console.log(140/this.distance,260/this.distance);
+        //     this.joints.update('head', { x, y });
+        //     return { x, y };
+        // }
     }
     
     /**

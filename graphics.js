@@ -109,9 +109,9 @@ export default class GraphicsEngine {
                 left_arm_bone.rotation = new BABYLON.Vector3(0, data.leftElbow, 0);
                 
                 right_thigh_bone.rotation = new BABYLON.Vector3(0, (-3)+data.rightHip,0);
-                right_calf_bone.rotation = new BABYLON.Vector3(0, -1*data.rightKnee,0);
+                // right_calf_bone.rotation = new BABYLON.Vector3(0, -1*data.rightKnee,0);
                 left_thigh_bone.rotation = new BABYLON.Vector3(0, (3)+(-1*data.leftHip),0);
-                left_calf_bone.rotation = new BABYLON.Vector3(0, data.leftKnee,0);
+                // left_calf_bone.rotation = new BABYLON.Vector3(0, data.leftKnee,0);
 
 
                 // random_bone.rotation = new BABYLON.Vector3(0, 0, itr);
