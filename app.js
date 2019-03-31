@@ -37,23 +37,23 @@ class MainComp extends React.Component{
                     
                     <audio id="wavingAud" hidden src="./dist/wavingflag.mp3"></audio>
                     <div className="jumbotron" style={{height : '50px', paddingTop: '1rem', marginBottom: '0px'}}>
-                        <h1><p align="center">DanceSmash</p></h1>
+                        <p align="center"><img height="50px" src="./dist/dancemash_03.png"/></p>
                     </div>
-                    <div id="app" className="navbar-na" style={{display: 'flex', flexDirection: 'row', width: "100vw"}}>
+                    <div id="app" className="navbar-na" style={{display: 'flex',backgroundColor:"#f49542.pA", flexDirection: 'row', width: "100vw"}}>
                             
-                            <div id="n1" style={{flexBasis: "33%",backgroundColor: this.state.slide==0?"orange":"white"}} onClick={()=>{this.setState({slide: 0})}}
+                            <div id="n1" style={{width: "33%" ,paddingTop:'5px', lineHeight: '4px',backgroundColor: this.state.slide==0?"orange":"white"}} onClick={()=>{this.setState({slide: 0})}}
                              // className="col-xl-4 col-md-4 col-lg-4 active nav-element"
                              >  
-                                    <h3><p align="center">DNCE-Net</p></h3>
+                                    <h4><p align="center">DNCE-Net</p></h4>
                                     <p align="center">Deep Neural Choreography Emulation Network</p>
                             </div>
                             
-                            <div id="n2" style={{flexBasis: "33%",backgroundColor: this.state.slide==1?"orange":"white"}} onClick={()=>{this.setState({slide: 1})}}  > 
-                                    <h3><p align="center">Compete</p></h3> 
+                            <div id="n2" style={{width: "33%",paddingTop:'5px',lineHeight: '4px',backgroundColor: this.state.slide==1?"orange":"white"}} onClick={()=>{this.setState({slide: 1})}}  > 
+                                    <h4><p align="center">Compete</p></h4> 
                                     <p align="center">Showcase your dancing skills globally</p>
                             </div>
-                            <div id="n3" style={{flexBasis: "33%",flexGrow: 1,backgroundColor: this.state.slide==2?"orange":"white"}} onClick={()=>{this.setState({slide: 2})}} > 
-                                    <h3><p align="center">Rank</p></h3> 
+                            <div id="n3" style={{width: "33%",paddingTop:'5px',flexGrow: 1, lineHeight: '4px',backgroundColor: this.state.slide==2?"orange":"white"}} onClick={()=>{this.setState({slide: 2})}} > 
+                                    <h4><p align="center">Rank</p></h4> 
                                     <p align="center">Rate other players</p>
                             </div>
                             
@@ -162,33 +162,6 @@ class MainComp extends React.Component{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * React Component for runnign neural networks and 3D graphics
  */
@@ -238,13 +211,16 @@ class App extends React.Component {
                 <h2 className="text-center" id="h2">
                     Make Your Dance Video With Avatar To Compete And Show Your Talent
                 </h2>
-                <button onClick={startRecord}>
-                    Start
-                </button>
-                <button onClick={stopRecord}>
-                    Stop
-                </button>
-                
+                <p align="center">
+                    <button className="btn btn-info" onClick={startRecord}>
+                        Start
+                    </button>
+                    &nbsp; &nbsp;
+                    <button className="btn btn-danger" onClick={stopRecord}>
+                        Stop
+                    </button>
+                </p>
+
                 <div className="row"  id="row">
                     <div className="col-6">
                         <div className="float-right"

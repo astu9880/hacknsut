@@ -34,6 +34,7 @@ export default class Rank extends React.Component{
 	}
         render(){
         return (
+					
         	<div
         		style={{
         			backgroundColor: '#e9ecef',
@@ -41,7 +42,7 @@ export default class Rank extends React.Component{
         			flexDirection: 'column',
         			justifyContent: 'space-around'
         		}}
-        	>
+        	><br/><br/><audio id="hidAud" hidden src="./dist/wavingflag.mp3"></audio>
         	 	<div
         	 		style ={{
         	 			height: '500px',
@@ -53,7 +54,7 @@ export default class Rank extends React.Component{
         	 		<div
         	 			style={videoBoxStyle}
         	 		>
-        	 			me
+        	 			<video id="rankVid1" src="./dist/wavingflag.mov" style={{height:'500px',width:'500px'}} />
         	 		</div>
         	 		<div
         	 			style={{
@@ -83,6 +84,7 @@ export default class Rank extends React.Component{
 							        </DropdownMenu>
 							      </Dropdown>
         	 				</div>
+									 &nbsp;
         	 				<div>
         	 					<Dropdown isOpen={this.state.dropdownOpen2} toggle={this.toggle2}>
 							        <DropdownToggle caret>
@@ -98,8 +100,7 @@ export default class Rank extends React.Component{
 							      </Dropdown>
         	 				</div>
         	 			</div>
-        	 			<img src={'./dist' + '/vs.jpg'} alt="VS" width="200px" height="200px" /> 
-        	 			<div
+								 <div
         	 				style={{
         	 					display: 'flex',
         	 					flexDirection: 'row',
@@ -109,16 +110,21 @@ export default class Rank extends React.Component{
         	 				<div>
         	 					{!this.state.player1?"choose Player 1":this.state.player1}
         	 				</div>
-        	 				<img src={'./dist' + '/play.jpg'} alt="VS" width="80px" height="60px" /> 
+        	 				<p align="center"> &nbsp;<b>vs.</b>&nbsp;</p>
         	 				<div>
         	 					{!this.state.player2?"choose Player 2":this.state.player2}
         	 				</div>
         	 			</div>
+        	 			<p align="center"><div className="btn btn-info" onClick={()=>{
+									 document.getElementById('rankVid1').play()
+									 document.getElementById('rankVid2').play()
+									 document.getElementById('hidAud').play()
+									 
+								 }}>Go</div> </p>
+        	 			
         	 		</div>	
-        	 		<div
-        	 			style={videoBoxStyle}
-        	 		>
-        	 			there
+        	 		<div style={videoBoxStyle}>
+							  <video id="rankVid2" src="./dist/wavingflagspare.mov" style={{height:'500px',width:'500px'}} />
         	 		</div>
         	 	</div>
 
@@ -134,7 +140,7 @@ export default class Rank extends React.Component{
         	 		</div>
 
         	 		<div
-        	 			style={{width: '50px'}}
+        	 			style={{width: '30px'}}
         	 		>
         	 		</div>
 
