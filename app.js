@@ -4,7 +4,7 @@ import ReactLoading from 'react-loading';
 import { markdown } from 'markdown';
 const fs = require("fs");
 
-
+import Rank from './rank.js'
 import './public/main.css'
 import './public/bootstrap.min.css'
 
@@ -113,31 +113,8 @@ class MainComp extends React.Component{
 
 : this.state.slide == 1?
                     <App />
-
 :
-                    <div className="slides jumbotron" style={{height:'750px',backgroundColor:'f5f5f5 !important'}}>
-                            <div className="form-group">
-                                    <label>Select song:</label>
-                                    <select className="form-control" id="sel1">
-                                    <option>Red</option>
-                                    <option>Blue</option>
-                                    <option>Green</option>
-                                    </select>
-                            </div>
-                            <InlineBlock className="col-lg-6 col-xl-6 col-md-6">
-                                <div className="container">
-
-                                
-                                </div>
-                            </InlineBlock>
-                            <InlineBlock className="col-lg-6 col-xl-6 col-md-6" >
-                                    <canvas>hi</canvas>
-                            </InlineBlock>
-                            <div className="container">
-                                <p align="center"><span className="btn btn-info">Record</span>&nbsp;&nbsp;<span className="btn btn-danger">Submit</span></p>
-                            </div>
-                            
-                    </div>
+                    <Rank />
                     
                 }
                 <script src="./public/main.js"></script>
