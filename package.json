@@ -14,7 +14,7 @@
     "babylonjs": "^3.2.0",
     "es6-promise": "^4.2.6",
     "isomorphic-fetch": "^2.2.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "markdown": "^0.5.0",
     "react": "^16.4.2",
     "react-bootstrap": "^1.0.0-beta.6",
